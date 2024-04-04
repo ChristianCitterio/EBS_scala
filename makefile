@@ -1,10 +1,10 @@
-setup-docker:
+setup:
 	sbt Docker/stage
+	sbt Docker/publishLocal
 
-run-docker: 
-	docker build . -t "play_scala" -f "target/docker/stage/Dockerfile"
-	docker run "play_scala"
+run: 
+	docker run play-scala
 
-down-docker:
-	docker stop "play_scala"
-	docker rm "play_scala"
+down:
+	docker stop play-scala
+	docker rm play-scala

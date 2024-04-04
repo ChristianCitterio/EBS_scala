@@ -16,4 +16,12 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "com.example.binders._"
 
-dockerExposedPorts ++= Seq(9000, 9001)
+Docker / maintainer := "you@example.com"
+Docker / packageName := "play-scala"
+Docker / version := sys.env.getOrElse("BUILD_NUMBER", "0")
+Docker / daemonUserUid := None
+Docker / daemonUser := "daemon"
+dockerExposedPorts := Seq(9000)
+dockerBaseImage := "openjdk:8-jre-alpine"
+dockerRepository := sys.env.get("ecr_repo")
+dockerUpdateLatest := true
