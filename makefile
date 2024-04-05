@@ -1,6 +1,5 @@
 setup:
-	sbt Docker/stage
-	sbt Docker/publishLocal
+	docker build . -t play-scala
 
 run: 
 	docker run play-scala
@@ -8,3 +7,6 @@ run:
 down:
 	docker stop play-scala
 	docker rm play-scala
+
+ngrok:
+	ngrok http localhost:9000
